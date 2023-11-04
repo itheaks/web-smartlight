@@ -1,0 +1,23 @@
+/* Hover effect and animations styles */
+
+/* Hover effect for sections */
+section:hover {
+    transform: scale(1.05); /* Scale up on hover */
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for expanding sections */
+section.expand {
+    animation: expandSection 0.5s ease forwards;
+    transform-origin: top;
+}
+
+@keyframes expandSection {
+    from {
+        height: 0;
+    }
+    to {
+        height: auto;
+    }
+}

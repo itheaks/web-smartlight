@@ -1,0 +1,161 @@
+/* Basic styling for the website */
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 200px;
+    padding: 0;
+    background-color: #f1f1f1;
+    font-size: 18px;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 20px; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.5s;
+}
+
+nav a:hover {
+    color: #f1f1f1;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #333;
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: none;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+    }
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin: 5%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s;
+}
+
+
+
+img {
+    max-width: 100%; 
+    height: auto;    
+    text-align: center; 
+    margin-top: 20px;  
+}
+
+.image-frame {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center vertically within the frame */
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Add a border to create a frame */
+    padding: 10px; /* Add padding to separate the images from the frame */
+}
+
+.image-frame img {
+    max-height: 50%; /* Set max height to 50% of the frame's height */
+    object-fit: cover; /* Maintain the aspect ratio and cover the space */
+}
+
+.image-1,
+.image-2 {
+    animation: slideIn 1s forwards; 
+}
+
+.image-1 {
+    padding-right: 1%;
+    width: 60%;
+}
+
+.image-2 {
+    padding-left: 1%;
+    width: 35%;
+}
+
+.image-1:hover,
+.image-2:hover {
+    transform: scale(1.1); /* Enlarge the image on hover */
+}
+
+
+@keyframes expandSection {
+    from {
+        height: 0;
+    }
+    to {
+        height: auto;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%); /* Start off the screen to the left */
+    }
+    to {
+        transform: translateX(0); /* Slide in to their positions */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

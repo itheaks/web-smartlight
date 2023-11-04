@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="smartlight.css"> 
+    <script src="smartlight.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+    <title>Arduino-Based Smart Light</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Arduino-Based Smart Light
+        </h1>
+    </header>
+
+<!--
+        <header>
+            <h1>Arduino-Based Smart Light</h1>
+        <div class="toggle-button">&#9776;</div>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#materials">Materials Used</a></li>
+                <li><a href="#components-connection">Components Connection</a></li>
+                <li><a href="#illustrated-images">Illustrated Images</a></li>
+                <li><a href="#code-explanation">Code Explanation</a></li>
+                <li><a href="#working">Working</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+-->
+
+    <section id="introduction">
+        <h2>Introduction:</h2>
+        <p>This project leverages the versatile Arduino Nano as the central control unit to process data 
+            and manage the connected components. The project features a pair of HC-SR04 ultrasonic 
+            sensors, a NE555 timer, a relay, a diode, two resistors (200k ohm and 10k ohm), two capacitors 
+            (22 micro F and 0.01 micro F), and a Common Cathode 7-Segment Display. The primary goal 
+            of this project is to measure distances in two distinct directions, visualize the results using a 7-
+            segment display, and control an external load based on specific conditions. This 
+            comprehensive report offers an in-depth understanding of the project, its materials, working 
+            principles, and a conclusive summary. </p>
+    </section>
+
+    <section id="materials">
+        <h2>Materials Used:</h2>
+        <ul>
+            <li><strong>Arduino Nano:</strong> Serving as the project's brain, the Arduino Nano processes data and orchestrates control over various connected components.</li>
+            <li><strong>HC-SR04 Ultrasonic Sensors (2):</strong> These sensors measure distances in two different directions, significantly contributing to the project's functionality.</li>
+            <li><strong>NE555 Timer:</strong> While the code doesn't explicitly specify its function, the NE555 timer is assumed to play a role in timing or generating pulse patterns.</li>
+            <li><strong>Relay:</strong> The relay acts as a pivotal component, allowing control over an external load, the activation of which depends on specific project conditions.</li>
+            <li><strong>Diode:</strong> Likely serving as a protective element, the diode prevents reverse voltage, safeguarding the project's integrity.</li>
+            <li><strong>Resistors (200k ohm and 10k ohm):</strong> These resistors have versatile applications, such as creating voltage dividers or functioning as pull-up/pull-down resistors for various components.</li>
+            <li><strong>Capacitors (22 micro F and 0.01 micro F):</strong> Capacitors fulfill roles in filtering or stabilizing power supply and timing circuits, with their precise purposes contingent on their connections.</li>
+            <li><strong>Common Cathode 7-Segment Display:</strong> Displaying the variable 'i' from the code, the 7-segment display offers a visual representation of data crucial to the project's operation.</li>
+        </ul>
+    </section>
+
+    <section id="components-connection">
+        <h2>Components Connection:</h2>
+        <p>A comprehensive wiring diagram or schematic is crucial for understanding how these 
+            components are connected. </p>
+        <div>
+            <img src="ckt.png" alt="Circuit Diagram">
+        </div>
+    </section>
+
+    <section id="illustrated-images">
+        <h2>Illustrated Images:</h2>
+        <p>These images are provided to vividly illustrate our working process and results.</p>
+        <div class="image-frame">
+            <img src="0.jpg" alt="Image 1" class="image-1">
+            <img src="00.jpg" alt="Image 2" class="image-2">
+        </div>
+        <p>In this image, the Arduino Nano and ultrasonic sensor, in coordination with the code, 
+            deactivate the relay, interrupting the electrical circuit. As a result, the bulb is turned off, ceasing 
+            its illumination.
+            </p>
+        <div class="image-frame">
+            <img src="1.jpg" alt="Image 1" class="image-1">
+            <img src="11.jpg" alt="Image 2" class="image-2">
+        </div>
+        <p>In this image, an Arduino Nano and an ultrasonic sensor are employed in conjunction with the 
+            code. The code activates a relay, completing the electrical circuit, and the bulb is turned on, 
+            emitting light.
+            </p>
+    </section>
+
+    <section id="code-explanation">
+        <h2>Code Explanation:</h2>
+        <p><a href="https://github.com/itheaks/iot-smartlight">GitHub Repository Link</a></p>
+        <h3>Arduino Code Components:</h3>
+        <p>The Arduino code provided orchestrates the operation of the project and can be broken down into several critical components:</p>
+    
+        <h3>Library Inclusion and Variable Definitions:</h3>
+        <p><pre><code>
+            #include "SevSeg.h"
+        </code></pre><br>
+        The code begins by including the "SevSeg" library, which is crucial for controlling the 7-segment display. It also defines pins for sensors, the relay, and other variables used in the project.</p>
+    
+        <h3>Setup Function:</h3>
+        <pre>
+            <code>
+            void setup() {
+            // Initialization and pin configurations
+            }
+            </code>
+        </pre>
+        <p>Inside the <code>setup()</code> function, the Arduino initializes serial communication, sets up the 7-segment display, and configures the modes for various pins used in the project.</p>
+    
+        <h3>Loop Function:</h3>
+        <pre><code>
+            void loop() {
+            // Main control logic and sensor measurements
+            }
+        </code></pre>
+        <p>The <code>loop()</code> function houses the central logic of the project. It comprises the following components:</p>
+    
+        <h3>Ultrasonic Sensor Measurements:</h3>
+        <p>The code triggers and measures the response time of the ultrasonic sensors (distance1 and distance2) to calculate distances in two directions.</p>
+    
+        <h3>Read Timer and Other Sensor Inputs:</h3>
+        <p>The code reads the state of the timer (timer_output) and stores it in 'read1'. Additionally, other sensors' states are read and stored in 'read', potentially influencing the project's control logic.</p>
+    
+        <h3>7-Segment Display Update:</h3>
+        <p>The 7-segment display is updated to show the current value of the variable 'i'.</p>
+    
+        <h3>Relay Control:</h3>
+        <p>The relay's state is controlled based on the value of 'i' and the distance measured by the rear ultrasonic sensor ('distance2'). When 'i' is greater than 0, the relay is set to HIGH, indicating activation of an external load.</p>
+    
+        <h3>Control Logic:</h3>
+        <p>The code's control logic rigorously assesses various conditions to determine the value of 'i'. For example, 'i' increases when the timer and certain distance conditions are met, while 'i' decreases under distinct criteria.</p>    
+    </section>
+
+    <section id="working">
+        <h2>Working:</h2>
+        <ol>
+            <li>
+                <h3>Ultrasonic Sensor Measurements:</h3>
+                <ul>
+                    <li>The two HC-SR04 ultrasonic sensors, positioned in different directions, emit ultrasonic waves.</li>
+                    <li>They measure the time taken for the ultrasonic waves to bounce back after hitting an object.</li>
+                    <li>By knowing the speed of sound, the code calculates the distances to the objects in front and rear directions and stores them in 'distance1' and 'distance2.'</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Timer and Other Sensor Inputs:</h3>
+                <ul>
+                    <li>The code reads the state of the timer (timer_output) and saves it as 'read1'.</li>
+                    <li>Additionally, the code monitors other sensors' states, potentially influencing the project's control logic.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>7-Segment Display:</h3>
+                <ul>
+                    <li>The 7-segment display is used to visually represent the variable 'i.'</li>
+                    <li>The value of 'i' is updated based on sensor readings and control logic.</li>
+                    <li>The updated 'i' is then displayed on the 7-segment display, allowing the user to see its value.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Relay Control:</h3>
+                <ul>
+                    <li>The relay, likely used to control an external load, is influenced by the value of 'i' and the distance measured by the second ultrasonic sensor ('distance2').</li>
+                    <li>If 'i' is greater than 0, the relay is set to HIGH, indicating the activation of an external load.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Control Logic:</h3>
+                <ul>
+                    <li>The code's control logic is meticulous, examining a range of conditions to establish the value of 'i'. For instance, 'i' increases under specific timer and distance conditions, and it decreases under distinct circumstances.</li>
+                    <li>The relay is also controlled based on the value of 'i' and the distance measurement from the rear ultrasonic sensor.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section id="conclusion">
+        <h2>Conclusion:</h2>
+        <p>This project exemplifies a multifaceted system that harnesses the capabilities of the Arduino 
+            Nano in conjunction with a multitude of sensors and components. To offer a comprehensive 
+            understanding, a detailed wiring diagram would be invaluable. Furthermore, additional 
+            insights into the NE555 timer's role and connections would be indispensable to furnish a 
+            comprehensive perspective on the project. This endeavor provides valuable lessons for those 
+            interested in delving into the realm of Arduino-based control systems, sensor integration, and 
+            customization to cater to specific project requisites. There exists considerable room for 
+            refinement and customization to align the project with precise use cases and objectives.</p>
+    </section>
+
+</body>
+</html>
